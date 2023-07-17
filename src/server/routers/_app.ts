@@ -13,6 +13,24 @@ export const appRouter = router({
         data: { title: input.title, isCompleted: false },
       });
     }),
+
+  updateStatus: t.procedure
+    .input(
+      z.object({
+        id: z.string(),
+        isCompleted: z.boolean(),
+      })
+    )
+    .mutation(({ input }) => {
+      return prisma.todo.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          isCompleted: input.isCompleted,
+        },
+      });
+    }),
 });
 
 export type AppRouter = typeof appRouter;
