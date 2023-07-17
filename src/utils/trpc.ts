@@ -7,7 +7,7 @@ export const trpc = createTRPCNext<AppRouter>({
     return {
       links: [
         httpBatchLink({
-          url: `http://localhost:3000/api/trpc`,
+          url: `https://t3-scratch.vercel.app`,
         }),
       ],
     };
