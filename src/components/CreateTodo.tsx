@@ -5,6 +5,7 @@ export default function CreateTodo() {
   const [title, setTitle] = useState("");
 
   const addTodo = trpc.todo.addTodo.useMutation();
+
   const { refetch } = trpc.todo.todos.useQuery();
 
   const handleSubmit = () => {
