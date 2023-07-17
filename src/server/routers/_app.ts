@@ -31,6 +31,19 @@ export const appRouter = router({
         },
       });
     }),
+  deleteTodo: t.procedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .mutation(({ input }) => {
+      return prisma.todo.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });
 
 export type AppRouter = typeof appRouter;
