@@ -1,8 +1,8 @@
 import { prisma } from "../db";
-import { publicProcedure, router } from "./trpc";
+import { router, t } from "./trpc";
 
 export const appRouter = router({
-  todos: publicProcedure.query(() => {
+  todos: t.procedure.query(() => {
     return prisma.todo.findMany();
   }),
 });
