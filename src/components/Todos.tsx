@@ -2,8 +2,8 @@ import { trpc } from "~/utils/trpc";
 import CheckBox from "./CheckBox";
 
 export default function Todos() {
-  const { data, isLoading } = trpc.todos.useQuery();
-
+  const { data, isLoading, refetch } = trpc.todos.useQuery();
+  const deleteTodo = trpc.deleteTodo.useMutation();
   if (isLoading) return <p>Loading...</p>;
 
   return (
@@ -24,6 +24,23 @@ export default function Todos() {
             </span>
           </p>
           <CheckBox todo={todo} />
+          <button
+            className="rounded bg-red-500 px-2 py-1 text-white"
+            onClick={() =>
+              deleteTodo.mutate(
+                {
+                  id: todo.id,
+                },
+                {
+                  onSuccess: () => {
+                    void refetch();
+                  },
+                }
+              )
+            }
+          >
+            Delete Todo
+          </button>
         </div>
       ))}
     </div>
