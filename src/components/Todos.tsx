@@ -3,9 +3,11 @@ import CheckBox from "./CheckBox";
 
 export default function Todos() {
   const { data, isLoading } = trpc.todos.useQuery();
+
   if (isLoading) return <p>Loading...</p>;
+
   return (
-    <div className="mx-auto mt-10 max-w-screen-md ">
+    <div className="">
       {data?.map((todo) => (
         <div
           key={todo.id}
