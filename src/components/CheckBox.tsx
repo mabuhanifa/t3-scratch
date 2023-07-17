@@ -1,9 +1,9 @@
 import { trpc } from "~/utils/trpc";
 
 export default function CheckBox({ todo }: { todo: Todo }) {
-  const updateTodo = trpc.updateStatus.useMutation();
+  const updateTodo = trpc.todo.updateStatus.useMutation();
 
-  const { refetch } = trpc.todos.useQuery();
+  const { refetch } = trpc.todo.todos.useQuery();
 
   const changeStatus = (id: string) => {
     updateTodo.mutate(

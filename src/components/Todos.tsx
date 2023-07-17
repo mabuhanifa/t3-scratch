@@ -2,8 +2,8 @@ import { trpc } from "~/utils/trpc";
 import CheckBox from "./CheckBox";
 
 export default function Todos() {
-  const { data, isLoading, refetch } = trpc.todos.useQuery();
-  const deleteTodo = trpc.deleteTodo.useMutation();
+  const { data, isLoading, refetch } = trpc.todo.todos.useQuery();
+  const deleteTodo = trpc.todo.deleteTodo.useMutation();
   if (isLoading) return <p>Loading...</p>;
 
   return (

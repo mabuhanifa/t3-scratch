@@ -4,8 +4,8 @@ import { trpc } from "~/utils/trpc";
 export default function CreateTodo() {
   const [title, setTitle] = useState("");
 
-  const addTodo = trpc.addTodo.useMutation();
-  const { refetch } = trpc.todos.useQuery();
+  const addTodo = trpc.todo.addTodo.useMutation();
+  const { refetch } = trpc.todo.todos.useQuery();
 
   const handleSubmit = () => {
     addTodo.mutate(
